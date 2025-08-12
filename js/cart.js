@@ -168,7 +168,7 @@ function proceedToCheckout() {
     }));
     
     // Redirect to checkout page
-    window.location.href = './checkout.html';
+    window.location.href = '../../checkout.html';
 }
 
 // Add toast animation styles
