@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Hut - FoodieExpress</title>
+    <link rel="stylesheet" href="../styles/restaurant.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html"><i class="fas fa-arrow-left"></i></a>
+                <h1><i class="fas fa-utensils"></i> FoodieExpress</h1>
+            </div>
+            <div class="cart-icon" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Restaurant Hero -->
+    <section class="restaurant-hero">
+        <div class="hero-image">
+            <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg" alt="Domino's Pizza">
+            <div class="hero-overlay">
+                <div class="container">
+                    <div class="restaurant-info">
+                        <h1>Pizza Hut</h1>
+                        <p class="cuisine">Pizzas, Italian, Fast Food</p>
+                        <div class="restaurant-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.2</span>
+                            </div>
+                            <div class="delivery-time">
+                                <i class="fas fa-clock"></i>
+                                <span>25-30 mins</span>
+                            </div>
+                            <div class="price-range">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹300 for two</span>
+                            </div>
+                        </div>
+                        <div class="offer-banner">
+                            <i class="fas fa-percentage"></i>
+                            <span>50% OFF up to ₹100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-categories">
+        <div class="container">
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">All Items</button>
+                <button class="category-tab" data-category="Pizza">Pizza</button>
+                <button class="category-tab" data-category="Sides">Sides</button>
+                <button class="category-tab" data-category="Desserts">Desserts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Items -->
+    <section class="menu-items">
+        <div class="container">
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: ₹<span id="cartTotal">0</span></span>
+            </div>
+            <button class="btn-primary checkout-btn" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/restaurant.js"></script>
+    <script>
+        // Initialize restaurant page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeRestaurant('dominos');
+        });
+    </script>
+</body>
+</html>

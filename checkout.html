@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FoodieExpress</title>
+    <link rel="stylesheet" href="styles/checkout.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><i class="fas fa-arrow-left"></i></a>
+                <h1><i class="fas fa-utensils"></i> FoodieExpress</h1>
+            </div>
+            <div class="checkout-steps">
+                <div class="step active">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Cart</span>
+                </div>
+                <div class="step active">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Address</span>
+                </div>
+                <div class="step active">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Payment</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        <div class="container">
+            <div class="checkout-content">
+                <!-- Left Column -->
+                <div class="checkout-left">
+                    <!-- Delivery Address -->
+                    <div class="checkout-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-map-marker-alt"></i> Delivery Address</h2>
+                            <button class="change-btn">Change</button>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-type">Home</div>
+                            <div class="address-details">
+                                <p><strong>John Doe</strong></p>
+                                <p>123 Main Street, Apartment 4B</p>
+                                <p>Coimbatore, Tamil Nadu 641001</p>
+                                <p>Phone: +91 9876543210</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Items -->
+                    <div class="checkout-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-shopping-bag"></i> Order Items</h2>
+                        </div>
+                        <div class="order-items" id="orderItems">
+                            <!-- Order items will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="checkout-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-credit-card"></i> Payment Method</h2>
+                        </div>
+                        <div class="payment-methods">
+                            <div class="payment-option">
+                                <input type="radio" id="cod" name="payment" value="cod" checked>
+                                <label for="cod">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>Cash on Delivery</span>
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="card" name="payment" value="card">
+                                <label for="card">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Credit/Debit Card</span>
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="upi" name="payment" value="upi">
+                                <label for="upi">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>UPI Payment</span>
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="wallet" name="payment" value="wallet">
+                                <label for="wallet">
+                                    <i class="fas fa-wallet"></i>
+                                    <span>Digital Wallet</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="checkout-right">
+                    <div class="order-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-details" id="summaryDetails">
+                            <!-- Summary will be loaded dynamically -->
+                        </div>
+                        <div class="promo-code">
+                            <input type="text" placeholder="Enter promo code" id="promoCode">
+                            <button onclick="applyPromoCode()">Apply</button>
+                        </div>
+                        <div class="total-section">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">₹0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Delivery Fee</span>
+                                <span id="deliveryFee">₹40</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Taxes & Fees</span>
+                                <span id="taxes">₹0</span>
+                            </div>
+                            <div class="total-row discount-row" id="discountRow" style="display: none;">
+                                <span>Discount</span>
+                                <span id="discount">-₹0</span>
+                            </div>
+                            <hr>
+                            <div class="total-row final-total">
+                                <span>Total</span>
+                                <span id="finalTotal">₹0</span>
+                            </div>
+                        </div>
+                        <button class="place-order-btn" onclick="placeOrder()">
+                            <i class="fas fa-check-circle"></i>
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="confirmation-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Order Placed Successfully!</h2>
+                <p>Your order has been confirmed and will be delivered soon.</p>
+                <div class="order-details">
+                    <div class="order-id">
+                        <strong>Order ID: <span id="orderId">#12345</span></strong>
+                    </div>
+                    <div class="estimated-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Estimated delivery: 25-30 minutes</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button onclick="trackOrder()">Track Order</button>
+                    <button onclick="goHome()">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
