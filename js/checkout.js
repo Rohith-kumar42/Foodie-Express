@@ -12,7 +12,7 @@ function loadCheckoutData() {
     const data = localStorage.getItem('checkoutData');
     if (!data) {
         // Redirect to home if no checkout data
-        window.location.href = 'index.html';
+        window.location.href = './index.html';
         return;
     }
     
