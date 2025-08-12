@@ -1,4 +1,3 @@
-// Cart functionality
 class Cart {
     constructor() {
         this.items = JSON.parse(localStorage.getItem('cart')) || [];
@@ -96,7 +95,6 @@ class Cart {
     }
 
     showAddedToCartMessage(itemName) {
-        // Create and show a toast message
         const toast = document.createElement('div');
         toast.className = 'toast-message';
         toast.innerHTML = `
@@ -124,7 +122,6 @@ class Cart {
 
         document.body.appendChild(toast);
 
-        // Remove toast after 3 seconds
         setTimeout(() => {
             toast.style.animation = 'slideOut 0.3s ease';
             setTimeout(() => {
@@ -140,10 +137,8 @@ class Cart {
     }
 }
 
-// Initialize cart
 const cart = new Cart();
 
-// Cart UI functions
 function openCart() {
     document.getElementById('cartSidebar').classList.add('open');
     document.getElementById('overlay').classList.add('active');
@@ -159,19 +154,13 @@ function proceedToCheckout() {
         alert('Your cart is empty!');
         return;
     }
-    
-    // Store cart data for checkout page
     localStorage.setItem('checkoutData', JSON.stringify({
         items: cart.items,
         total: cart.getTotal(),
         timestamp: new Date().toISOString()
     }));
-    
-    // Redirect to checkout page
     window.location.href = '../../checkout.html';
 }
-
-// Add toast animation styles
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {

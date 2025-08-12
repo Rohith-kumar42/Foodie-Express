@@ -1,4 +1,3 @@
-// Home page functionality
 document.addEventListener('DOMContentLoaded', function() {
     loadCategories();
     loadRestaurants();
@@ -122,9 +121,7 @@ function setupFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
             
             const filter = this.getAttribute('data-filter');
@@ -145,9 +142,7 @@ function filterByCategory(categoryId) {
             }
             if (categoryId === 'icecream') {
                 return itemCat === 'ice cream' || itemCat === 'sundae';
-            }
-            // For other categories, the id should match the category name (e.g. 'pizza', 'burgers')
-            return itemCat === categoryId;
+            } return itemCat === categoryId;
         })
     );
 
@@ -184,14 +179,12 @@ function updateLocation() {
         let newLocation = e.target.value;
         newLocation = newLocation.trim().toUpperCase();
         localStorage.setItem('userLocation', newLocation);
-        // Optionally reload restaurants based on location
         document.querySelectorAll('.loc').forEach(el => {
             el.textContent = newLocation;
         });
         loadRestaurants();
     });
 
-    // Set input value from localStorage if available
     const savedLocation = localStorage.getItem('userLocation');
     if (savedLocation) {
         locationInput.value = savedLocation;

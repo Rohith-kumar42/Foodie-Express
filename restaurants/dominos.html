@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <div class="container">
             <div class="nav-brand">
@@ -22,7 +22,7 @@
         </div>
     </header>
 
-    <!-- Restaurant Hero -->
+   
     <section class="restaurant-hero">
         <div class="hero-image">
             <img src="https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg" alt="Domino's Pizza">
@@ -55,7 +55,6 @@
         </div>
     </section>
 
-    <!-- Menu Categories -->
     <section class="menu-categories">
         <div class="container">
             <div class="category-tabs">
@@ -67,17 +66,17 @@
         </div>
     </section>
 
-    <!-- Menu Items -->
+  
     <section class="menu-items">
         <div class="container">
             <div class="menu-grid" id="menuGrid">
-                <!-- Menu items will be loaded dynamically -->
+                
             </div>
         </div>
     </section>
 
 
-    <!-- Cart Sidebar -->
+
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>Your Order</h3>
@@ -86,7 +85,7 @@
             </button>
         </div>
         <div class="cart-items" id="cartItems">
-            <!-- Cart items will be loaded dynamically -->
+            
         </div>
         <div class="cart-footer">
             <div class="cart-total">
@@ -98,7 +97,6 @@
         </div>
     </div>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="closeCart()"></div>
 
 
@@ -106,7 +104,7 @@
     <script src="../js/cart.js"></script>
     <script src="../js/restaurant.js"></script>
     <script>
-        // Initialize restaurant page
+        
         document.addEventListener('DOMContentLoaded', function() {
             initializeRestaurant('dominos');
         });

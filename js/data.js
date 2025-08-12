@@ -1,5 +1,3 @@
-// Restaurant and menu data
-// Restaurant and menu data
 const restaurantsData = {
     dominos: {
         id: "dominos",
@@ -1068,13 +1066,10 @@ const categoriesData = [
     }
 ];
 
-// Save data to localStorage for fast retrieval
 function saveDataToLocalStorage() {
     localStorage.setItem('restaurantsData', JSON.stringify(restaurantsData));
     localStorage.setItem('categoriesData', JSON.stringify(categoriesData));
 }
-
-// Load data from localStorage
 function loadDataFromLocalStorage() {
     const restaurants = localStorage.getItem('restaurantsData');
     const categories = localStorage.getItem('categoriesData');
@@ -1086,7 +1081,6 @@ function loadDataFromLocalStorage() {
         };
     }
     
-    // If no data in localStorage, save current data
     saveDataToLocalStorage();
     return {
         restaurants: restaurantsData,

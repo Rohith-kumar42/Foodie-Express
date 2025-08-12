@@ -1,4 +1,3 @@
-// Restaurant page functionality
 let currentRestaurant = null;
 
 function initializeRestaurant(restaurantId) {
@@ -52,9 +51,7 @@ function setupCategoryTabs() {
     const categoryTabs = document.querySelectorAll('.category-tab');
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            // Remove active class from all tabs
             categoryTabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             this.classList.add('active');
             
             const category = this.getAttribute('data-category');
@@ -88,22 +85,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 category: document.getElementById('itemCategory').value,
                 veg: document.getElementById('itemVeg').checked
             };
-            
-            // Add item to current restaurant's menu
             currentRestaurant.menu.push(newItem);
-            
-            // Update localStorage
             const data = loadDataFromLocalStorage();
             data.restaurants[currentRestaurant.id] = currentRestaurant;
             localStorage.setItem('restaurantsData', JSON.stringify(data.restaurants));
-            
-            // Reload menu
             loadMenu();
-            
-            // Close modal
             closeAddItemModal();
-            
-            // Show success message
             showSuccessMessage('Item added successfully!');
         });
     }
